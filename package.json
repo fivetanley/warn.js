@@ -1,0 +1,23 @@
+{
+  "author": "Stanley Stuart <dstanley.stuart@gmail.com>",
+  "name": "warn",
+  "description": "A JSHint configuration / management tool.",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fivetanley/warn.js.git"
+  },
+  "dependencies": {
+    "amdefine": "0.0.2"
+  },
+  "devDependencies": {
+    "mocha": "~1.0.3",
+    "should": "~0.6.3"
+  },
+  "optionalDependencies": {
+    "requirejs": "~1.0.8"
+  },
+  "engines": {
+    "node": "*"
+  }
+}
