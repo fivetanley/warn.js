@@ -2,7 +2,8 @@ if (typeof define !== 'function'){
 	var define = require('amdefine')(module);
 }
 
-define(['../lib/Option'], function(Option){
+define(['../lib/options/Option'], function(Option){
+	'use strict';
 	describe('Option', function(){
 
 		var option;
@@ -15,7 +16,7 @@ define(['../lib/Option'], function(Option){
 				}).should.throw(/should be an object/);
 			});
 
-			it('throw an error when name, description, or type' +
+			it('throw an error when name, description, type or defaultValue' +
 			   'is not present', function(){
 				(function(){
 					option = new Option({});
@@ -24,14 +25,14 @@ define(['../lib/Option'], function(Option){
 
 			it('throws an error when defaultValue is not the '+
 			   'Boolean,Number,Function,String, or Object constructor', function(){
-				(function() {
+				(function(){
 					option = new Option({
 						'name' : 'foo',
 						'description' : 'an example description',
 						'type' : 'Array',
 						'defaultValue' : []
 					});
-				}).should.throw;
+				}).should.throw(/must be Boolean,Number,Function,String, or Object/i);
 			});
 		});
 
