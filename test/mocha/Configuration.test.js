@@ -149,17 +149,17 @@ define( [ 'Configuration', 'options/index', 'Option', 'Predef' ],
 			});
 		});
 
-		describe( '#addPredef', function() {
+		describe( '#togglePredef', function() {
 
 			it( 'enables jshint predefined globals if first '+
 				'parameter matches a jshint predefined global like jquery', function() {
-				config.addPredef( 'jquery' );
+				config.togglePredef( 'jquery' );
 				config.jquery.value.should.be.true;
 			});
 
 			it( 'enables third-party predefined globals as defined by Warn or custom', function(){
-				config.addPredef( 'knockout' );
-				config.predef.value.should.include( 'knockout' );
+				config.togglePredef( 'knockout' );
+				config.predef.value.should.include( config.predefs.knockout.getData()[0]);
 			});
 
 		});

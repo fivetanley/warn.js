@@ -8,7 +8,8 @@
     "url": "git://github.com/fivetanley/warn.js.git"
   },
   "dependencies": {
-    "amdefine": "0.0.2"
+    "amdefine": "0.0.2",
+    "commander": "~0.6.0"
   },
   "devDependencies": {
     "mocha": "~1.0.3",
