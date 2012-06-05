@@ -21,7 +21,7 @@ module.exports = function( grunt ){
 			options: require( './lints/lib.jshint' ),
 
 			test: {
-				options: require( 'lints/test.jshint' )
+				options: require( './lints/test.jshint' )
 			}
 		},
 
