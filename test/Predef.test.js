@@ -2,7 +2,7 @@ if ( typeof define !== 'function' ) {
 	var define = require( 'amdefine' )( module );
 }
 
-define( [ 'Predef' ], function( Predef ) {
+define( [ '../lib/Predef' ], function( Predef ) {
 	'use strict';
 
 	describe( 'Predef' , function(){
@@ -122,6 +122,28 @@ define( [ 'Predef' ], function( Predef ) {
 				dependencies.should.include( 'baz' );
 			});
 
+		});
+
+		describe( '#getDict', function() {
+		
+			var dict1 = [ 'foo', 'bar', 'baz' ],
+				dict2 = [ 'bing', 'bang', 'bung' ],
+				predefined = new Predef({
+					dict: dict1,
+					deps: [ ]
+				}),
+				predefined2 = new Predef( dict2 );
+
+
+
+			it( 'returns the dictionary of predefined globals', function() {
+				dict1.map( function( word ) {
+					predefined.getDict().should.include( word );
+				});
+				dict2.map( function( word) {
+					predefined2.getDict().should.include( word );
+				});	
+			});
 		});
 
 	});

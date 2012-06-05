@@ -2,7 +2,8 @@ if ( typeof define !== 'function' ) {
 	var define = require('amdefine')(module);
 }
 
-define( [ 'Configuration', 'options/index', 'Option', 'Predef' ],
+define( [ '../lib/Configuration', '../lib/options/index', '../lib/Option',
+	'../lib/Predef' ],
 	function( Configuration, options, Option, Predef ) {
 	'use strict';	
 
@@ -48,9 +49,7 @@ define( [ 'Configuration', 'options/index', 'Option', 'Predef' ],
 
 				masterKeys.should.be.instanceOf(Array);
 
-				iterator = 0;
-				masterKeys.map( function( iterator ) {	
-					key = masterKeys[ iterator ];
+				masterKeys.map( function( key ) {	
 					config.should.have.ownProperty( key );
 					config[ key ].should.be.instanceOf( Option );
 					config[ key ].defaultValue.should.equal( Configuration.prototype
@@ -69,8 +68,8 @@ define( [ 'Configuration', 'options/index', 'Option', 'Predef' ],
 			});
 
 			it( 'exists on the prototype', function() {
-				predefs.should.exist();
 				config.should.not.have.ownProperty( 'predefs' );
+				predefs.should.be.a('object');
 				config.should.be.a('object');
 			});
 
@@ -78,8 +77,7 @@ define( [ 'Configuration', 'options/index', 'Option', 'Predef' ],
 				var predefinedGlobals = Object.keys( predefs ),
 					iterator,
 					predefinedGlobal;
-				predefinedGlobals.map( function( iterator ) {
-					predefinedGlobal = predefinedGlobals[ iterator ];
+				predefinedGlobals.map( function( predefinedGlobal ) {
 					predefs[ predefinedGlobal ].should.be.instanceOf( Predef );
 				});
 					
@@ -99,8 +97,7 @@ define( [ 'Configuration', 'options/index', 'Option', 'Predef' ],
 					configValue,
 					defaultValue;
 				
-				defaultValuesList.map(function( iterator ) {
-					key = defaultValuesList[ iterator ];
+				defaultValuesList.map(function( key ) {
 					configValue = config[ key ].value;
 					defaultValue = defaultValues[ key ].defaultValue;
 					configValue.should.equal( defaultValue );
@@ -148,17 +145,23 @@ define( [ 'Configuration', 'options/index', 'Option', 'Predef' ],
 			});
 		});
 
-		describe( '#togglePredef', function() {
+		describe( '#enablePredef', function() {
 
 			it( 'enables jshint predefined globals if first '+
 				'parameter matches a jshint predefined global like jquery', function() {
-				config.togglePredef( 'jquery' );
-				config.jquery.value.should.be.true();
+				config.enablePredef( 'jquery' );
+				config.jquery.value.should.equal( true );
 			});
 
 			it( 'enables third-party predefined globals as defined by Warn or custom', function(){
-				config.togglePredef( 'knockout' );
-				config.predef.value.should.include( config.predefs.knockout.getData()[0]);
+				config.enablePredef( 'knockout' );
+				config.predef.value.should.include( config.predefs.knockout.getDict()[0]);
+			});
+
+			it( 'loads dependencies for any predefs like knockback that require other predefined globals', function(){
+				config.enablePredef( 'knockback' );
+				config.predef.value.should.include( config.predefs.knockout.getDict()[0] );
+				config.predef.value.should.include( 'kb' );
 			});
 
 		});

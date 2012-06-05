@@ -2,7 +2,7 @@ if (typeof define !== 'function'){
 	var define = require('amdefine')(module);
 }
 
-define(['../lib/options/Option'], function(Option){
+define(['../lib/Option' ], function(Option){
 	'use strict';
 	describe('Option', function(){
 
@@ -17,14 +17,14 @@ define(['../lib/options/Option'], function(Option){
 			});
 
 			it('throw an error when name, description, type or defaultValue' +
-			   'is not present', function(){
+				'is not present', function(){
 				(function(){
 					option = new Option({});
 				}).should.throw(/name,description, type, and defaultValue required/);
 			});
 
 			it('throws an error when defaultValue is not the '+
-			   'Boolean,Number,Function,String, or Object constructor', function(){
+				'Boolean,Number,Function,String, or Object constructor', function(){
 				(function(){
 					option = new Option({
 						'name' : 'foo',
@@ -54,7 +54,7 @@ define(['../lib/options/Option'], function(Option){
 
 			it('changes the value', function(){
 				option.setValue(true);
-				option.value.should.be.true;
+				option.value.should.equal( true );
 			});
 		});
 
