@@ -56,8 +56,16 @@ Usage: warn.js [options]
     -m, --maxerr <number>  Set the number of maximum errors for JSHint to report before quitting.
     -i, --indent           Specify indentation
 ```
+### Reading / Writing configuration files
 
 You can `load` in a previous config (but only if it's `JSON` format) using the `--load -l` flag.  `Warn` will use those values before enabling/disabling settings.
+
+If there is a `.jshintrc` file in the current working directory, `Warn` will load it automatically.
+
+Use the `--output -o` option to tell Warn.js where to write the configuration file.  If `-o` is not passed to `Warn`, then the configuration will be written to `.jshintrc` in the current working directory.
+
+
+### Configuring JSHint options
 
 Most of the values `JSHint` reads in are `Boolean` values ( `true`/`false` ), so use `--enable -e` or `--disable -d` accordingly:
 
