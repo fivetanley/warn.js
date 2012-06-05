@@ -15,10 +15,10 @@ module.exports = function( grunt ){
 
 		jshint: {
 			lib: {
-				options: require( 'lints/lib.jshint.json' )
+				options: require( './lints/lib.jshint.json' )
 			},
 
-			options: require( 'lints/lib.jshint' ),
+			options: require( './lints/lib.jshint' ),
 
 			test: {
 				options: require( 'lints/test.jshint' )
