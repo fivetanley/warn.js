@@ -2,7 +2,7 @@
   "author": "Stanley Stuart <dstanley.stuart@gmail.com>",
   "name": "warn",
   "description": "A JSHint configuration / management tool.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
     "url": "git://github.com/fivetanley/warn.js.git"
