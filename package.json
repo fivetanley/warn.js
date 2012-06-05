@@ -17,9 +17,6 @@
     "requirejs": "~1.0.8",
     "mocha-cakes": "~0.9.0"
   },
-  "optionalDependencies": {
-    "requirejs": "~1.0.8"
-  },
   "engines": {
     "node": "*"
   },
