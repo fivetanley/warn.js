@@ -22,5 +22,8 @@
   },
   "engines": {
     "node": "*"
+  },
+  "bin": {
+    "warn.js": "./bin/main"
   }
 }
