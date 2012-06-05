@@ -4,6 +4,32 @@
 
 **Warn** makes it easy to create and reuse [JSHint](https://github.com/jshint/node-jshint) configuration files.  You can even toggle settings on the fly.
 
+`Warn.js` can generate *predefined globals* ( so JSHint won't yell at you because you're using them because they haven't been defined yet) for the following projects:
+
+  1. Agility
+  2. Angular
+  3. Backbone
+  4. Ember
+  5. Ext.js
+  6. Knockout
+  7. Knockback
+  8. RequireJS
+  9. Spine.js
+  10. Underscore
+  11. YUI
+
+`Warn` also supports the following test suite's globals:
+
+  1. Buster
+  2. Chai (TDD and BDD style )
+  3. Expect.js
+  4. Hiro
+  5. Jasmine
+  6. Mocha (All styles / interfaces)
+  7. QUnit
+  8. Sinon
+  9. Vows
+
 First, install JSHint if you haven't so already:
 
 `npm install -g jshint`
@@ -39,6 +65,12 @@ Most of the values `JSHint` reads in are `Boolean` values ( `true`/`false` ), so
 
 `Warn` will automatically enable globals for projects that require other projects globals ( for instance, `Backbone` requires `Underscore`'s `_` and `jQuery`'s `$` ).  **NOTE**: If `JSHint` already has a predefined global, Warn.js will enable/disable that one (e.g. `jquery` ).
 
+If you want to enable/disable more than one option, **use commas**:
+
+`warn.js --enable jquery,backbone,ember,etc`
+
+If Warn.js doesn't recognize a set of predefined globals passed to `--enable` or `--disable`, it will add the word to your config automatically.
+
 **NOTE** : `Warn` will enable options, *then* disable them.  Disable always wins.
 
 Some values are `Number`s, and they have their own options:
@@ -66,4 +98,158 @@ myproject2 = {
 **Make sure the tests still pass!**
 
 `grunt build`
+
+### What are the name of the options I can enable and disable?
+
+The below settings are taken from the [node-jshint](https://github.com/jshint/jshint-node/) project and will work when passed to `--enable` or `--disable`.
+
+```
+// Defaults as of jshint edition 2011-04-16
+
+{
+    // If the scan should stop on first error.
+    "passfail": false,
+    // Maximum errors before stopping.
+    "maxerr": 50,
+
+
+    // Predefined globals
+
+    // If the standard browser globals should be predefined.
+    "browser": false,
+    // If the Node.js environment globals should be predefined.
+    "node": false,
+    // If the Rhino environment globals should be predefined.
+    "rhino": false,
+    // If CouchDB globals should be predefined.
+    "couch": false,
+    // If the Windows Scripting Host environment globals should be predefined.
+    "wsh": false,
+
+    // If jQuery globals should be predefined.
+    "jquery": false,
+    // If Prototype and Scriptaculous globals should be predefined.
+    "prototypejs": false,
+    // If MooTools globals should be predefined.
+    "mootools": false,
+    // If Dojo Toolkit globals should be predefined.
+    "dojo": false,
+
+    // Custom predefined globals.
+    "predef": [],
+
+
+    // Development
+
+    // If debugger statements should be allowed.
+    "debug": false,
+    // If logging globals should be predefined (console, alert, etc.).
+    "devel": false,
+
+
+    // ECMAScript 5
+
+    // If ES5 syntax should be allowed.
+    "es5": false,
+    // Require the "use strict"; pragma.
+    "strict": false,
+    // If global "use strict"; should be allowed (also enables strict).
+    "globalstrict": false,
+
+
+    // The Good Parts
+
+    // If automatic semicolon insertion should be tolerated.
+    "asi": false,
+    // If line breaks should not be checked, e.g. `return [\n] x`.
+    "laxbreak": false,
+    // If bitwise operators (&, |, ^, etc.) should not be allowed.
+    "bitwise": false,
+    // If assignments inside if, for and while should be allowed. Usually
+    // conditions and loops are for comparison, not assignments.
+    "boss": false,
+    // If curly braces around all blocks should be required.
+    "curly": false,
+    // If === should be required.
+    "eqeqeq": false,
+    // If == null comparisons should be tolerated.
+    "eqnull": false,
+    // If eval should be allowed.
+    "evil": false,
+    // If ExpressionStatement should be allowed as Programs.
+    "expr": false,
+    // If `for in` loops must filter with `hasOwnPrototype`.
+    "forin": false,
+    // If immediate invocations must be wrapped in parens, e.g.
+    // `( function(){}() );`.
+    "immed": false,
+    // If use before define should not be tolerated.
+    "latedef": false,
+    // If functions should be allowed to be defined within loops.
+    "loopfunc": false,
+    // If arguments.caller and arguments.callee should be disallowed.
+    "noarg": false,
+    // If the . should not be allowed in regexp literals.
+    "regexp": false,
+    // If unescaped first/last dash (-) inside brackets should be tolerated.
+    "regexdash": false,
+    // If script-targeted URLs should be tolerated.
+    "scripturl": false,
+    // If variable shadowing should be tolerated.
+    "shadow": false,
+    // If `new function () { ... };` and `new Object;` should be tolerated.
+    "supernew": false,
+    // If variables should be declared before used.
+    "undef": false,
+    // If `this` inside a non-constructor function is valid.
+    "validthis": false,
+    // If smarttabs should be tolerated
+    // (http://www.emacswiki.org/emacs/SmartTabs).
+    "smarttabs": false,
+    // If the `__proto__` property should be allowed.
+    "proto": false,
+    // If one case switch statements should be allowed.
+    "onecase": false,
+    // If non-standard (but widely adopted) globals should be predefined.
+    "nonstandard": false,
+    // Allow multiline strings.
+    "multistr": false,
+    // If line breaks should not be checked around commas.
+    "laxcomma": false,
+    // If semicolons may be ommitted for the trailing statements inside of a
+    // one-line blocks.
+    "lastsemic": false,
+    // If the `__iterator__` property should be allowed.
+    "iterator": false,
+    // If only function scope should be used for scope tests.
+    "funcscope": false,
+    // If es.next specific syntax should be allowed.
+    "esnext": false,
+
+
+    // Style preferences
+
+    // If constructor names must be capitalized.
+    "newcap": false,
+    // If empty blocks should be disallowed.
+    "noempty": false,
+    // If using `new` for side-effects should be disallowed.
+    "nonew": false,
+    // If names should be checked for leading or trailing underscores
+    // (object._attribute would be disallowed).
+    "nomen": false,
+    // If only one var statement per function should be allowed.
+    "onevar": false,
+    // If increment and decrement (`++` and `--`) should not be allowed.
+    "plusplus": false,
+    // If all forms of subscript notation are tolerated.
+    "sub": false,
+    // If trailing whitespace rules apply.
+    "trailing": false,
+    // If strict whitespace rules apply.
+    "white": false,
+    // Specify indentation.
+    "indent": 4
+}
+```
 
