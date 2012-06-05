@@ -22,8 +22,5 @@
   },
   "engines": {
     "node": "*"
-  },
-  "scripts": {
-    "test": "grunt build"
   }
 }
