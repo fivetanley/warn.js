@@ -26,12 +26,8 @@ module.exports = function( grunt ) {
 		mocha_instance.reporter( 'spec' ).ui( 'bdd' );
 		paths.map( mocha_instance.addFile.bind( mocha_instance ) );
 
-		runner = mocha_instance.run();
-		runner.on( 'fail', function( test ) {
-			testsPassed = false;
-		});
-		runner.on( 'end', function() {
-			done( testsPassed );
-		});
+		runner = mocha_instance.run(function(failures){
+      done(!failures);
+    });
 	});
 };

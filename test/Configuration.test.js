@@ -19,7 +19,7 @@ define( [ '../lib/Configuration', '../lib/options/index', '../lib/Option',
 			
 			it( 'exists on the prototype', function() {
 				config.should.not.have.ownProperty( 'defaultValues' );
-				Configuration.prototype.defaultValues.should.be.a('object');
+				Configuration.prototype.defaultValues.should.be.type('object');
 			});
 
 			it( 'contains all the default values for options', function() {
@@ -69,8 +69,8 @@ define( [ '../lib/Configuration', '../lib/options/index', '../lib/Option',
 
 			it( 'exists on the prototype', function() {
 				config.should.not.have.ownProperty( 'predefs' );
-				predefs.should.be.a('object');
-				config.should.be.a('object');
+				predefs.should.be.type('object');
+				config.should.be.type('object');
 			});
 
 			it ( 'has a Predef instance for every key', function() {
@@ -155,13 +155,13 @@ define( [ '../lib/Configuration', '../lib/options/index', '../lib/Option',
 
 			it( 'enables third-party predefined globals as defined by Warn or custom', function(){
 				config.enablePredef( 'knockout' );
-				config.predef.value.should.include( config.predefs.knockout.getDict()[0]);
+				config.predef.value.should.containEql( config.predefs.knockout.getDict()[0]);
 			});
 
 			it( 'loads dependencies for any predefs like knockback that require other predefined globals', function(){
 				config.enablePredef( 'knockback' );
-				config.predef.value.should.include( config.predefs.knockout.getDict()[0] );
-				config.predef.value.should.include( 'kb' );
+				config.predef.value.should.containEql( config.predefs.knockout.getDict()[0] );
+				config.predef.value.should.containEql( 'kb' );
 			});
 
 		});

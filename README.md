@@ -2,6 +2,11 @@
 ## A JSHint configuration tool.
 [![Build Status](https://secure.travis-ci.org/fivetanley/warn.js.png)](http://travis-ci.org/fivetanley/warn.js)
 
+**NOTE: This project is not being actively maintained. It is not up to
+date with all the JSHint options. I had no idea people were still using
+this and found it useful. If you are interested in maintaining the
+project, open an issue or ping me on twitter (@fivetanley). Thanks!**
+
 **Warn** makes it easy to create and reuse [JSHint](https://github.com/jshint/node-jshint) configuration files.  You can even toggle settings on the fly.
 
 `Warn.js` can generate *predefined globals* ( so JSHint won't yell at you because you're using them because they haven't been defined yet) for the following projects:

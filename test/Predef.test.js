@@ -62,7 +62,7 @@ define( [ '../lib/Predef' ], function( Predef ) {
 
 				deps.should.be.instanceOf( Array );
 				deps.should.have.lengthOf( 1 );
-				deps.should.include( 'bleh' );
+				deps.should.containEql( 'bleh' );
 				
 			});
 
@@ -117,9 +117,9 @@ define( [ '../lib/Predef' ], function( Predef ) {
 				dependencies = predefined.getDeps();
 				dependencies.should.be.instanceOf( Array );
 				dependencies.should.have.lengthOf( 3 );
-				dependencies.should.include( 'foo' );
-				dependencies.should.include( 'bar' );
-				dependencies.should.include( 'baz' );
+				dependencies.should.containEql( 'foo' );
+				dependencies.should.containEql( 'bar' );
+				dependencies.should.containEql( 'baz' );
 			});
 
 		});
@@ -138,10 +138,10 @@ define( [ '../lib/Predef' ], function( Predef ) {
 
 			it( 'returns the dictionary of predefined globals', function() {
 				dict1.map( function( word ) {
-					predefined.getDict().should.include( word );
+					predefined.getDict().should.containEql( word );
 				});
 				dict2.map( function( word) {
-					predefined2.getDict().should.include( word );
+					predefined2.getDict().should.containEql( word );
 				});	
 			});
 		});
